@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Nav = () => {
+export default function Navbar({userData,setUserData}) {
+  let navigate=useNavigate();
+  let Logout=()=>{
+    localStorage.removeItem('userToken');
+    setUserData(null);
+    navigate('/Login');
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -18,6 +25,7 @@ const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
+
             <Link className="nav-link" to="/">
               Movies
             </Link>
@@ -29,6 +37,11 @@ const Nav = () => {
             <Link className="nav-link" to="login">
               Login
             </Link>
+            
+            <span className="nav-link" onClick={Logout}>
+              Logout
+            </span>
+
           </div>
         </div>
       </div>
@@ -36,7 +49,7 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+
 
 // Install react-router-dom
 // App.js => Routes => <Route path .. element />

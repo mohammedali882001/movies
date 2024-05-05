@@ -7,7 +7,18 @@ import Login from "./Components/Login/Login";
 // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./Components/NotFound/NotFound";
+import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
 function App() {
+
+  const [userData, setUserData] = useState(null);
+  function SaveUserData() {
+    let enecodeToken = localStorage.getItem("userToken");
+    let decodeToken = jwtDecode(enecodeToken);
+    setUserData(decodeToken);
+  }
+
   let routers = createBrowserRouter([
     {
       path: "",
@@ -23,7 +34,7 @@ function App() {
           ),
         },
 
-        { path: "login", element: <Login></Login> },
+        { path: "login", element: <Login SaveUserData={SaveUserData} /> },
 
         { path: "register", element: <Register></Register> },
 

@@ -14,7 +14,7 @@ export default function Register() {
     setIsLoading(true);
 
     const response = await axios
-      .post(`http://localhost:5212/api/Account/register`, values)
+      .post(`http://localhost:34951/api/Account/register`, values)
       .then((res) => {
         if (res.data && res.data.isSuccess) {
           setIsLoading(false);
