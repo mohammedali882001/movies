@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../apis/config";
 
 export default function Login({ SaveUserData }) {
   let navigate = useNavigate();
@@ -12,8 +13,8 @@ export default function Login({ SaveUserData }) {
 
   let HandleLogin = (values) => {
     setIsLoading(true);
-    axios
-      .post(`http://localhost:5212/api/Account/Login`, values)
+    axiosInstance
+      .post(`Account/Login`, values)
       .then((response) => {
         if (response.data.isSuccess) {
           setIsLoading(false);

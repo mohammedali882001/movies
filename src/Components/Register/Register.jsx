@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../apis/config";
 
 export default function Register() {
   let navigate = useNavigate();
@@ -13,8 +14,9 @@ export default function Register() {
   const HandleRegister = async (values) => {
     setIsLoading(true);
 
-    const response = await axios
-      .post(`http://localhost:5212/api/Account/register`, values)
+    const response = await 
+    axiosInstance
+      .post(`Account/register`, values)
       .then((res) => {
         if (res.data && res.data.isSuccess) {
           setIsLoading(false);
