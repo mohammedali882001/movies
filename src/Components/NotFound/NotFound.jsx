@@ -1,4 +1,4 @@
-import './NotFound.module.css';
+import "./NotFound.module.css";
 export default function NotFound(props) {
   return (
     <div className="content">

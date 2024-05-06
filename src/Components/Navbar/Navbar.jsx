@@ -21,11 +21,14 @@ const Nav = () => {
             <Link className="nav-link" to="/">
               Movies
             </Link>
-          
+
             <Link className="nav-link" to="Register">
               Register
             </Link>
-            
+
+            <Link className="nav-link" to="login">
+              Login
+            </Link>
           </div>
         </div>
       </div>
