@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Navbar({userData,setUserData}) {
-  let navigate=useNavigate();
-  let Logout=()=>{
-    localStorage.removeItem('userToken');
+export default function Navbar({ userData, setUserData }) {
+  let navigate = useNavigate();
+  let Logout = () => {
+    localStorage.removeItem("userToken");
     setUserData(null);
-    navigate('/Login');
-  }
+    navigate("/Login");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -25,31 +25,32 @@ export default function Navbar({userData,setUserData}) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-
             <Link className="nav-link" to="/">
               Movies
             </Link>
+            {userData === null ? (
+              <>
+                <Link className="nav-link" to="Register">
+                  Register
+                </Link>
 
-            <Link className="nav-link" to="Register">
-              Register
-            </Link>
-
-            <Link className="nav-link" to="login">
-              Login
-            </Link>
-            
-            <span className="nav-link" onClick={Logout}>
-              Logout
-            </span>
-
+                <Link className="nav-link" to="login">
+                  Login
+                </Link>
+              </>
+            ) : (
+              <>
+                <span className="nav-link cursor-pointer " onClick={Logout}>
+                  Logout
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>
     </nav>
   );
-};
-
-
+}
 
 // Install react-router-dom
 // App.js => Routes => <Route path .. element />

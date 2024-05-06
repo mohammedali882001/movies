@@ -11,7 +11,6 @@ import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 function App() {
-
   const [userData, setUserData] = useState(null);
   function SaveUserData() {
     let enecodeToken = localStorage.getItem("userToken");
@@ -22,7 +21,7 @@ function App() {
   let routers = createBrowserRouter([
     {
       path: "",
-      element: <Layout></Layout>,
+      element: <Layout setUserData={setUserData} userData={userData}></Layout>,
       children: [
         {
           index: true,
