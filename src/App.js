@@ -9,6 +9,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./Components/NotFound/NotFound";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import Directors from "./Components/Directors/Directors";
+import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -37,6 +39,11 @@ function App() {
 
         { path: "register", element: <Register></Register> },
 
+        { path: "director", element: <Directors></Directors> },
+        {
+          path: "directorDetails/:id",
+          element: <DirectorDetails></DirectorDetails>,
+        },
         { path: "*", element: <NotFound></NotFound> },
       ],
     },
