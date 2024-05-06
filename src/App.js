@@ -60,9 +60,6 @@ function App() {
       <div className="App">
         <RouterProvider router={routers}></RouterProvider>
       </div>
-      <div className="App">
-        <RouterProvider router={routers}></RouterProvider>
-      </div>
     </>
   );
 }
