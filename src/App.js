@@ -9,6 +9,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./Components/NotFound/NotFound";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import ActorCard from "./Components/ActorCard/ActorCard";
+import ActorList from "./Components/ActorList/ActorList";
+import ActorDetails from "./Components/ActorDetails/ActorDetails";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -36,6 +39,9 @@ function App() {
         { path: "login", element: <Login SaveUserData={SaveUserData} /> },
 
         { path: "register", element: <Register></Register> },
+        { path: "actor", element: <ActorCard></ActorCard> },
+        { path: "actors", element: <ActorList></ActorList> },
+        { path: "actorsDetails/:id", element: <ActorDetails></ActorDetails> },
 
         { path: "*", element: <NotFound></NotFound> },
       ],

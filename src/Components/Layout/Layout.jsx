@@ -8,7 +8,7 @@ export default function Layout({ userData, setUserData }) {
   return (
     <>
       <Navbar userData={userData} setUserData={setUserData} />
-      <div className="container">
+      <div className=" container ">
         <Outlet />
       </div>
 

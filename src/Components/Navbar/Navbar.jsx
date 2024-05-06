@@ -28,6 +28,9 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="/">
               Movies
             </Link>
+            <Link className="nav-link" to="actors">
+              Actors
+            </Link>
             {userData === null ? (
               <>
                 <Link className="nav-link" to="Register">
