@@ -31,6 +31,9 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="actors">
               Actors
             </Link>
+            <Link className="nav-link" to="director">
+              Directors
+            </Link>
             {userData === null ? (
               <>
                 <Link className="nav-link" to="Register">
@@ -39,10 +42,6 @@ export default function Navbar({ userData, setUserData }) {
 
                 <Link className="nav-link" to="login">
                   Login
-                </Link>
-
-                <Link className="nav-link" to="director">
-                  Directors
                 </Link>
               </>
             ) : (
