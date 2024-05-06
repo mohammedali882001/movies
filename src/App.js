@@ -73,7 +73,8 @@ import { jwtDecode } from "jwt-decode";
 import ActorCard from "./Components/ActorCard/ActorCard";
 import ActorList from "./Components/ActorList/ActorList";
 import ActorDetails from "./Components/ActorDetails/ActorDetails";
-
+import Directors from "./Components/Directors/Directors";
+import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
 function App() {
   const [userData, setUserData] = useState(null);
   function SaveUserData() {
