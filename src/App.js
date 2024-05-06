@@ -4,6 +4,7 @@ import Register from "./Components/Register/Register";
 import Home from "./Components/Home/Home";
 import Layout from "./Components/Layout/Layout";
 import Login from "./Components/Login/Login";
+import SeriesDetails from "./Components/SeriesDetails/SeriesDetails";
 // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./Components/NotFound/NotFound";
@@ -36,6 +37,7 @@ function App() {
         { path: "login", element: <Login SaveUserData={SaveUserData} /> },
 
         { path: "register", element: <Register></Register> },
+        { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
 
         { path: "*", element: <NotFound></NotFound> },
       ],
@@ -43,9 +45,9 @@ function App() {
   ]);
   return (
     <>
-    <div className="App">
-      <RouterProvider router={routers}></RouterProvider>
-    </div>
+      <div className="App">
+        <RouterProvider router={routers}></RouterProvider>
+      </div>
     </>
   );
 }
