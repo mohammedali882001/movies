@@ -198,7 +198,7 @@ export default function SeriesCategories() {
         </div>
       </div>
 
-      <div className="container mt-5 p-5">
+      {/* <div className="container mt-5 p-5">
         <select
           className="form-select"
           aria-label="Default select example"
@@ -259,7 +259,7 @@ export default function SeriesCategories() {
             <p>No series found for the selected category.</p>
           )}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
