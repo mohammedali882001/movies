@@ -12,7 +12,7 @@ export default function Layout({ userData, setUserData }) {
         <Outlet />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
