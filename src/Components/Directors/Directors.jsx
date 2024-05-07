@@ -8,27 +8,33 @@ export default function Directors() {
   const [directors, setDirectors] = useState([]);
   const [searchDirector, setSearchDirector] = useState("");
   const [originalDirectors, setOriginalDirectors] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   let getAllDirectors = () => {
+    setIsLoading(true);
     axiosInstance.get(`Director`).then((res) => {
       if (res.data.isSuccess) {
         setDirectors(res.data.data);
         setOriginalDirectors(res.data.data);
+        setIsLoading(false);
       } else {
         setDirectors([]);
         setOriginalDirectors([]);
+        setIsLoading(false);
       }
     });
   };
 
   const handleSearchDirector = (searchString) => {
+    setIsLoading(true);
     setSearchDirector(searchString);
     setDirectors(originalDirectors);
     axiosInstance.get(`Director/${searchString}`).then((res) => {
       if (res.data.isSuccess) {
         setDirectors(res.data.data);
+        setIsLoading(false);
       } else {
         setDirectors([]);
+        setIsLoading(false);
       }
     });
   };
@@ -70,13 +76,21 @@ export default function Directors() {
         </div>
       </div>
 
-      <div className="row">
-        {directors.map((director) => (
-          <div key={director.id} className="col-md-4 gy-5">
-            <DirectorCard director={director} />
+      {isLoading ? (
+        <div className=" text-center  ">
+          <i className=" fas fa-spinner fa-spin fa-3x text-main "></i>
+        </div>
+      ) : (
+        <>
+          <div className="row">
+            {directors.map((director) => (
+              <div key={director.id} className="col-md-4 gy-5">
+                <DirectorCard director={director} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </>
   );
 }
