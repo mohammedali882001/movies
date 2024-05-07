@@ -3,35 +3,30 @@ import styles from "./ActorCard.module.css";
 import { axiosInstance } from "../apis/config";
 import { Link } from "react-router-dom";
 export default function ActorCard({ Actor }) {
-  // const [Actor, setActor] = useState({});
-  // let GatActor = () => {
-  //   axiosInstance
-  //     .get(`Actor/1`)
-  //     .then((res) => {
-  //       // console.log(res.data.data);
-  //       setActor(res.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   GatActor();
-  // }, []);
-
   return (
     <>
       <Link
         style={{ textDecoration: "none" }}
         to={`/actorsDetails/${Actor.id}`}
       >
-        <div className="card cursor-pointer " style={{ width: "18rem" }}>
-          <img src={Actor.image} className="card-img-top" alt="Actor Image" />
+        <div
+          className="card border-primary cursor-pointer"
+          style={{ maxWidth: "18rem" }}
+        >
+          <img src={Actor.image} className="card-img-top" alt="image Name" />
           <div className="card-body">
-            <h5 className="card-title">{Actor.name}</h5>
-            <p className="card-text">{Actor.overview}</p>
-            <p className="card-text">age : {Actor.age}</p>
+            <h5 className="card-title text-primary fw-bolder">{Actor.name}</h5>
+            <p className="card-text">
+              <span className=" text-primary fw-bolder  "> Overview :</span>{" "}
+              {Actor.overview}
+            </p>
+            <p className="card-text">
+              <small className="text-muted">
+                {" "}
+                <span className=" text-primary fw-bolder ">Age :</span>{" "}
+                {Actor.age}
+              </small>
+            </p>
           </div>
         </div>
       </Link>

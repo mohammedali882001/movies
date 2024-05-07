@@ -15,11 +15,14 @@ import ActorList from "./Components/ActorList/ActorList";
 import ActorDetails from "./Components/ActorDetails/ActorDetails";
 import Directors from "./Components/Directors/Directors";
 import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
+import Series from "./Components/Series/Series";
 function App() {
   const [userData, setUserData] = useState(null);
+
   function SaveUserData() {
     let enecodeToken = localStorage.getItem("userToken");
     let decodeToken = jwtDecode(enecodeToken);
+
     setUserData(decodeToken);
   }
 
@@ -41,7 +44,12 @@ function App() {
         { path: "login", element: <Login SaveUserData={SaveUserData} /> },
 
         { path: "register", element: <Register></Register> },
-        { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
+        {
+          path: "seriesDetails/:id",
+          element: <SeriesDetails></SeriesDetails>,
+        },
+        { path: "series", element: <Series></Series> },
+        // { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
         { path: "actor", element: <ActorCard></ActorCard> },
         { path: "actors", element: <ActorList></ActorList> },
         { path: "actorsDetails/:id", element: <ActorDetails></ActorDetails> },

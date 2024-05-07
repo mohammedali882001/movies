@@ -37,7 +37,7 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="director">
               Directors
             </Link>
-            {userData === null ? (
+            {userData === null && setUserData === null ? (
               <>
                 <Link className="nav-link" to="Register">
                   Register
@@ -60,7 +60,3 @@ export default function Navbar({ userData, setUserData }) {
     </nav>
   );
 }
-
-// Install react-router-dom
-// App.js => Routes => <Route path .. element />
-// <Link to="" />
