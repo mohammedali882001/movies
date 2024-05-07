@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Navbar.module.css";
+
 export default function Navbar({ userData, setUserData }) {
   let navigate = useNavigate();
   let Logout = () => {
@@ -9,9 +9,7 @@ export default function Navbar({ userData, setUserData }) {
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg bg-body-tertiary fixed-top ${styles.navBar}`}
-    >
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <span className="navbar-brand">Movies App</span>
         <button
@@ -39,7 +37,7 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="director">
               Directors
             </Link>
-            {userData === null ? (
+            {userData === null && setUserData === null ? (
               <>
                 <Link className="nav-link" to="Register">
                   Register

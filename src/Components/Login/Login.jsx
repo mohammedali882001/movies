@@ -18,31 +18,17 @@ export default function Login({ SaveUserData }) {
       .then((response) => {
         if (response.data.isSuccess) {
           setIsLoading(false);
-          //console.log(response.data.isSuccess);
 
           localStorage.setItem("userToken", response.data.data.token);
           SaveUserData();
-          //console.log(response.data);
           navigate("/");
         } else {
           setIsLoading(false);
-          //console.log(response.data.data.value);
           setErrorMsg(response.data.data.value);
-          //console.log(response.data.data[0].description)
         }
       })
-      .catch((err) => {
-        //setErrorMsg(`${err.response.data.param}: ${err.response.data.msg}`)
-      });
+      .catch((err) => {});
   };
-  //   if(data.message==='success')
-  //   {
-  //     localStorage.setItem('userToken',data.token);
-  //     SaveUserData();
-  //     navigate('/');
-  //   }
-  //   //console.log(values);
-  // };
 
   let Validation = Yup.object({
     userName: Yup.string()
@@ -66,6 +52,7 @@ export default function Login({ SaveUserData }) {
     onSubmit: HandleLogin,
     validationSchema: Validation,
   });
+
   return (
     <>
       <div className=" w-75 mx-mx-auto py-4 ">
