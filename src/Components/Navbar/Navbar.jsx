@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-
+import styles from "./Navbar.module.css";
 export default function Navbar({ userData, setUserData }) {
   let navigate = useNavigate();
   let Logout = () => {
@@ -9,7 +9,9 @@ export default function Navbar({ userData, setUserData }) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className={`navbar navbar-expand-lg bg-body-tertiary fixed-top ${styles.bgbodytertiary}`}
+    >
       <div className="container-fluid">
         <span className="navbar-brand">Movies App</span>
         <button
@@ -36,6 +38,10 @@ export default function Navbar({ userData, setUserData }) {
             </Link>
             <Link className="nav-link" to="director">
               Directors
+            </Link>
+
+            <Link className="nav-link" to="getAllFavSeries">
+              Favorite Series
             </Link>
             {userData === null && setUserData === null ? (
               <>

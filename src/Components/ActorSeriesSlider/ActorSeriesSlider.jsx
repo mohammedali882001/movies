@@ -17,14 +17,19 @@ export default function ActorSeriesSlider({ ActorId }) {
     cssEase: "linear",
   };
   function getAllSeries() {
-    axiosInstance.get(`ActorSeries/actor/${ActorId}`).then((res) => {
-      console.log(res.data.data);
-      if (res.data.isSuccess) {
-        setSeries(res.data.data);
-      } else {
-        setSeries([]);
-      }
-    });
+    axiosInstance
+      .get(`ActorSeries/actor/${ActorId}`)
+      .then((res) => {
+        console.log(res.data.data);
+        if (res.data.isSuccess) {
+          setSeries(res.data.data);
+        } else {
+          setSeries([]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   useEffect(() => {
     getAllSeries();
