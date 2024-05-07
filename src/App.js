@@ -49,7 +49,7 @@ function App() {
           element: <SeriesDetails></SeriesDetails>,
         },
         { path: "series", element: <Series></Series> },
-        { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
+        // { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
         { path: "actor", element: <ActorCard></ActorCard> },
         { path: "actors", element: <ActorList></ActorList> },
         { path: "actorsDetails/:id", element: <ActorDetails></ActorDetails> },

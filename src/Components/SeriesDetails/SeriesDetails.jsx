@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../apis/config";
 import styles from "./SeriesDetails.module.css";
+import { useParams } from "react-router-dom";
 
 export default function SeriesDetails() {
   const [series, setSeries] = useState(null);
-
+  let { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
   //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTW9oYW1tZWQyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI0NjMxNTk3Yy0yMTAwLTRmOWYtOTRlMS01MDE1MzVmNzc3NzUiLCJqdGkiOiI2MDUxODY4YS1lMDk5LTQzOWItOWNkMC05YmJlNjRkOWJjNDIiLCJleHAiOjE3MTUwODUwMTAsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzQ5NTEvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.e2h4NAJSWPDPFdE1ZFbyDhHmsmXRCwO2Yy9QVaQ8ueE"; // Replace with your actual token
@@ -16,7 +17,7 @@ export default function SeriesDetails() {
   };
   let GetIsFavorite = async () => {
     await axiosInstance
-      .get(`FavSeries/series/5`, config)
+      .get(`FavSeries/series/${id}`, config)
       .then((res) => {
         if (res.data.isSuccess) {
           // console.log(res.data);
@@ -31,7 +32,7 @@ export default function SeriesDetails() {
       });
   };
   let AddSeriesToFavorite = () => {
-    axiosInstance.post(`FavSeries/5`, null, config).then((res) => {
+    axiosInstance.post(`FavSeries/${id}`, null, config).then((res) => {
       if (res.data.isSuccess) {
         setIsFavorite(true);
         // toggleFavorite();
@@ -45,7 +46,7 @@ export default function SeriesDetails() {
   };
 
   let DeleteSeriesFromFavorite = () => {
-    axiosInstance.delete(`FavSeries/5`, config).then((res) => {
+    axiosInstance.delete(`FavSeries/${id}`, config).then((res) => {
       if (res.data.isSuccess) {
         setIsFavorite(false);
         // console.log(res.data);
@@ -57,7 +58,7 @@ export default function SeriesDetails() {
   };
 
   let getSeriesData = () => {
-    axiosInstance.get(`Series/5`).then((res) => {
+    axiosInstance.get(`Series/${id}`).then((res) => {
       // Assuming 5 is the ID of the series
       if (res.data.isSuccess) {
         setSeries(res.data.data);

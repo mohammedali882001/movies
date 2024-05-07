@@ -60,7 +60,3 @@ export default function Navbar({ userData, setUserData }) {
     </nav>
   );
 }
-
-// Install react-router-dom
-// App.js => Routes => <Route path .. element />
-// <Link to="" />
