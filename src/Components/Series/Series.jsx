@@ -197,68 +197,69 @@ export default function SeriesCategories() {
           )}
         </div>
       </div>
-    </>
-    <div className="container mt-5 p-5">
-      <select
-        className="form-select"
-        aria-label="Default select example"
-        value={selectedCategory}
-        onChange={(e) => handleCategoryChange(e.target.value)}
-      >
-        <option value="">Select Category</option>
-        {seriesCat.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
 
-      <div className="mt-3">
-        {seriesData.length > 0 ? (
-          <div className="row">
-            {seriesData.map((series) => (
-              <div key={series.seriesId} className="col-md-4 mb-4">
-                <div className="card">
-                  <img
-                    src={series.posterImage}
-                    className="card-img-top"
-                    alt={series.title}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{series.title}</h5>
-                    <p className="card-text">{series.description}</p>
-                    <Link
-                      className="btn btn-primary"
-                      to={`/seriesDetails/${series.seriesId}`}
-                    >
-                      Details
-                    </Link>
-                    {series.isFavorite ? (
-                      <span
-                        className="favorite-icon cursor-pointer favorited"
-                        onClick={() =>
-                          DeleteSeriesFromFavorite(series.seriesId)
-                        }
+      <div className="container mt-5 p-5">
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          value={selectedCategory}
+          onChange={(e) => handleCategoryChange(e.target.value)}
+        >
+          <option value="">Select Category</option>
+          {seriesCat.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+
+        <div className="mt-3">
+          {seriesData.length > 0 ? (
+            <div className="row">
+              {seriesData.map((series) => (
+                <div key={series.seriesId} className="col-md-4 mb-4">
+                  <div className="card">
+                    <img
+                      src={series.posterImage}
+                      className="card-img-top"
+                      alt={series.title}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{series.title}</h5>
+                      <p className="card-text">{series.description}</p>
+                      <Link
+                        className="btn btn-primary"
+                        to={`/seriesDetails/${series.seriesId}`}
                       >
-                        ❤️
-                      </span>
-                    ) : (
-                      <span
-                        className="favorite-icon cursor-pointer"
-                        onClick={() => AddSeriesToFavorite(series.seriesId)}
-                      >
-                        🤍
-                      </span>
-                    )}
+                        Details
+                      </Link>
+                      {series.isFavorite ? (
+                        <span
+                          className="favorite-icon cursor-pointer favorited"
+                          onClick={() =>
+                            DeleteSeriesFromFavorite(series.seriesId)
+                          }
+                        >
+                          ❤️
+                        </span>
+                      ) : (
+                        <span
+                          className="favorite-icon cursor-pointer"
+                          onClick={() => AddSeriesToFavorite(series.seriesId)}
+                        >
+                          🤍
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No series found for the selected category.</p>
-        )}
+              ))}
+            </div>
+          ) : (
+            <p>No series found for the selected category.</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
