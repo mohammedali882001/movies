@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./DirectorDetails.module.css";
 import { Link, useParams } from "react-router-dom";
 import { axiosInstance } from "../apis/config";
+import DirectorSlider from "../DirectorSlider/DirectorSlider";
 export default function DirectorDetails() {
   let { id } = useParams();
   const [director, setDirector] = useState({});
@@ -22,61 +23,29 @@ export default function DirectorDetails() {
   }, []);
   return (
     <>
-      <div className="card mb-3" style={{ maxWidth: "500000" }}>
-        <div className="row g-3">
+      <div
+        className="card mb-5 gy-5"
+        style={{ maxWidth: "500000", height: 600 }}
+      >
+        <div className="row g-0">
           <div className="col-md-4">
             <img
               src={director.image}
-              style={{ height: 400 }}
-              className="img-fluid rounded-start w-100 "
+              style={{ height: 500 }}
+              className="img-fluid rounded-start"
               alt="..."
             />
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h2 className="card-title">{director.name}</h2>
-              <p className="card-text">{director.overview}</p>
-              <p className="card-text">
-                <small className="text-muted">Age : {director.age}</small>
+              <h2 className="card-title fw-bold fs-1">{director.name}</h2>
+              <p className="fw-bold fs-4 ">Overview</p>
+              <p className="card-text " style={{ color: "black" }}>
+                {director.overview}
               </p>
+              <p className="fw-bold fs-4 ">Known For</p>
+              <DirectorSlider DirectorId={id}></DirectorSlider>
             </div>
-
-            <h6>Movies:</h6>
-            <ul>
-              {director.movies && director.movies.length > 0 ? (
-                director.movies.map((movie) => (
-                  <li key={movie.id}>
-                    <Link
-                      className="text-main"
-                      style={{ textDecoration: "none" }}
-                      to={`/movies/${movie.id}`}
-                    >
-                      {movie.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <span>0</span>
-              )}
-            </ul>
-            <h6>Series:</h6>
-            <ul>
-              {director.series && director.series.length > 0 ? (
-                director.series.map((series) => (
-                  <li key={series.id}>
-                    <Link
-                      className="text-main"
-                      style={{ textDecoration: "none" }}
-                      to={`/series/${series.id}`}
-                    >
-                      {series.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <span>0</span>
-              )}
-            </ul>
           </div>
         </div>
       </div>
