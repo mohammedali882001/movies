@@ -15,6 +15,7 @@ import ActorList from "./Components/ActorList/ActorList";
 import ActorDetails from "./Components/ActorDetails/ActorDetails";
 import Directors from "./Components/Directors/Directors";
 import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
+import Series from "./Components/Series/Series";
 function App() {
   const [userData, setUserData] = useState(null);
 
@@ -47,6 +48,8 @@ function App() {
           path: "seriesDetails/:id",
           element: <SeriesDetails></SeriesDetails>,
         },
+        { path: "series", element: <Series></Series> },
+        { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
         { path: "actor", element: <ActorCard></ActorCard> },
         { path: "actors", element: <ActorList></ActorList> },
         { path: "actorsDetails/:id", element: <ActorDetails></ActorDetails> },
