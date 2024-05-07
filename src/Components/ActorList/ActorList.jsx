@@ -54,7 +54,7 @@ export default function ActorList() {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-5 p-5">
         <div className="input-group mb-3">
           <input
             type="text"

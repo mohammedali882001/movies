@@ -5,10 +5,14 @@ font-size: x-large;
 color: #4F6F52;
 }
 .section{
-    background-color: gray ;
+    background-color: #128991 ;
     width: min-content;
-    padding: 3px ;
+    padding: 0px 8px ;
     border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+
 }
 .title{
     font-family: "Poppins", sans-serif;
@@ -17,11 +21,15 @@ color: #4F6F52;
     font-weight: bold;
 }
 .watchNowButton{
-    background-color: #128991;
-    border: none;
+    background-color: #128991 !important;
+    border: none !important;
 }
 .watchNowButton:hover{
-    background-color: #128991;
+    background-color: #128991 !important;
 
 }
 
+.description{
+    font-weight: bold;
+    font-size: 18px;
+}
