@@ -84,7 +84,7 @@ export default function Directors() {
         <>
           <div className="row">
             {directors.map((director) => (
-              <div key={director.id} className="col-md-4 gy-5">
+              <div key={director.id} className="col-md-3 gy-5">
                 <DirectorCard director={director} />
               </div>
             ))}
