@@ -16,6 +16,7 @@ import ActorDetails from "./Components/ActorDetails/ActorDetails";
 import Directors from "./Components/Directors/Directors";
 import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
 import Series from "./Components/Series/Series";
+import { Toaster } from "react-hot-toast";
 function App() {
   const [userData, setUserData] = useState(null);
 
@@ -65,6 +66,7 @@ function App() {
   ]);
   return (
     <>
+      <Toaster></Toaster>
       <div className="App">
         <RouterProvider router={routers}></RouterProvider>
       </div>
