@@ -10,7 +10,7 @@ export default function Navbar({ userData, setUserData }) {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg bg-body-tertiary fixed-top ${styles.navBar}`}
+      className={`navbar navbar-expand-lg bg-body-tertiary fixed-top ${styles.navbar}`}
     >
       <div className="container-fluid">
         <span className="navbar-brand">Movies App</span>
