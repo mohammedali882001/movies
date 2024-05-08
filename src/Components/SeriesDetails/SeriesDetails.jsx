@@ -64,6 +64,7 @@ export default function SeriesDetails() {
       // Assuming 5 is the ID of the series
       if (res.data.isSuccess) {
         setSeries(res.data.data);
+        console.log(res.data.data);
       } else {
         setSeries(null);
       }
@@ -111,7 +112,7 @@ export default function SeriesDetails() {
             <div className="col-md-4">
               <img
                 src={series.posterImage}
-                className="img-fluid rounded-start"
+                className="img-fluid rounded h-100"
                 alt={series.title}
               />
             </div>
@@ -143,32 +144,57 @@ export default function SeriesDetails() {
                     </>
                   )}
                 </div>
-                <p className={`card-text mb-5 ${styles.section}`}>
-                  {series.filmSection === 0 ? "Anime" : series.filmSection}
+                <p className={`card-text mb-3 ${styles.section}`}>
+                  {series.filmSection === 0
+                    ? "Anime"
+                    : series.filmSection === 1
+                    ? "Asian"
+                    : series.filmSection === 2
+                    ? "Foreign"
+                    : series.filmSection === 4
+                    ? "Arabic"
+                    : series.filmSection === 5
+                    ? "Netflix"
+                    : null}
                 </p>
+
                 <div>
-                  <strong className={styles.overView}>Overview:</strong>
-                  <p>{series.description}</p>
+                  <strong className={styles.overView}>Overview</strong>
+                  <p className={styles.description}>{series.description}</p>
                 </div>
                 <hr />
-                {series.seasons.map((season, index) => (
-                  <p key={index} className="card-text">
-                    <strong>Season {index + 1}:</strong> {season.numOfEpisodes}{" "}
-                    episodes
-                  </p>
-                ))}
+                <div className="d-flex flex-wrap">
+                  {series.seasons.map((season, index) => (
+                    <div key={index} className="card-text me-5 mb-3">
+                      <strong className={styles.overView}>
+                        Season {index + 1}
+                      </strong>{" "}
+                      <div className={styles.description}>
+                        {season.numOfEpisodes}
+                      </div>
+                      <hr />
+                    </div>
+                  ))}
+                </div>
+
                 <div className="d-flex justify-content-start">
                   <div className="me-5">
-                    <strong>Released Date :</strong> {series.createdYear}
+                    <strong className={styles.overView}>Released Date </strong>{" "}
+                    <div className={styles.description}>
+                      {series.createdYear}
+                    </div>
                   </div>
                   <div>
-                    <strong>Duration :</strong> {series.lengthMinutes}
+                    <strong className={styles.overView}>Duration </strong>{" "}
+                    <div className={styles.description}>
+                      {series.lengthMinutes}
+                    </div>
                   </div>
                 </div>
                 <hr />
-                <p className="card-text">
-                  <strong>Director : </strong>
-                  {series.directorName}
+                <p className="card-text d-inline">
+                  <strong className={styles.overView}>Director </strong>
+                  <h3 className={styles.description}>{series.directorName}</h3>
                 </p>
 
                 <div className="d-flex justify-content-end">
