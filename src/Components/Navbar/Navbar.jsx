@@ -37,6 +37,10 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="director">
               Directors
             </Link>
+
+            <Link className="nav-link" to="getAllFavSeries">
+              Favorite Series
+            </Link>
             {userData === null && setUserData === null ? (
               <>
                 <Link className="nav-link" to="Register">

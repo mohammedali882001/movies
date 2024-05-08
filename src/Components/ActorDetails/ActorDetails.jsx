@@ -10,7 +10,7 @@ export default function ActorDetails() {
     axiosInstance
       .get(`Actor/${id}`)
       .then((res) => {
-        // console.log(res.data.data);
+        console.log(res.data.data);
         setActor(res?.data?.data);
       })
       .catch((err) => {
