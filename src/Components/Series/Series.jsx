@@ -24,16 +24,41 @@ export default function SeriesCategories() {
     getSeriesCategories();
   }, []);
 
-  const handleCategoryChange = async (categoryId) => {
-    setSelectedCategory(categoryId);
-    if (categoryId) {
+  const token = localStorage.getItem("userToken");
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  let GetIsFavorite = async (id) => {
+    try {
+      const response = await axiosInstance.get(
+        `FavSeries/series/${id}`,
+        config
+      );
+      return response.data.isSuccess;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+  const fetchData = async () => {
+    if (selectedCategory) {
       try {
         const response = await axiosInstance.get(
-          `CategorySeries/${categoryId}`
+          `CategorySeries/${selectedCategory}`
         );
         if (response.data.isSuccess) {
-          setSeriesData(response.data.data);
-          console.log(response.data.data);
+          const updatedSeriesData = await Promise.all(
+            response.data.data.map(async (series) => {
+              const isFav = await GetIsFavorite(series.seriesId);
+              series.isFavorite = isFav;
+              return series;
+            })
+          );
+          setSeriesData(updatedSeriesData);
         } else {
           setSeriesData([]);
         }
@@ -43,6 +68,46 @@ export default function SeriesCategories() {
     } else {
       setSeriesData([]);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedCategory]);
+
+  let AddSeriesToFavorite = async (id) => {
+    try {
+      await axiosInstance.post(`FavSeries/${id}`, null, config);
+      setSeriesData((prevSeriesData) =>
+        prevSeriesData.map((series) => {
+          if (series.seriesId === id) {
+            series.isFavorite = true;
+          }
+          return series;
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  let DeleteSeriesFromFavorite = async (id) => {
+    try {
+      await axiosInstance.delete(`FavSeries/${id}`, config);
+      setSeriesData((prevSeriesData) =>
+        prevSeriesData.map((series) => {
+          if (series.seriesId === id) {
+            series.isFavorite = false;
+          }
+          return series;
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCategoryChange = async (categoryId) => {
+    setSelectedCategory(categoryId);
   };
 
   return (
@@ -81,6 +146,23 @@ export default function SeriesCategories() {
                     >
                       Details
                     </Link>
+                    {series.isFavorite ? (
+                      <span
+                        className="favorite-icon cursor-pointer favorited"
+                        onClick={() =>
+                          DeleteSeriesFromFavorite(series.seriesId)
+                        }
+                      >
+                        ❤️
+                      </span>
+                    ) : (
+                      <span
+                        className="favorite-icon cursor-pointer"
+                        onClick={() => AddSeriesToFavorite(series.seriesId)}
+                      >
+                        🤍
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
