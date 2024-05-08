@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ActorDetails.module.css";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../apis/config";
+import ActorSeriesSlider from "../ActorSeriesSlider/ActorSeriesSlider";
 export default function ActorDetails() {
   let { id } = useParams();
   const [Actor, setActor] = useState({});
@@ -22,7 +23,11 @@ export default function ActorDetails() {
   }, []);
   return (
     <>
-      <div className="card mb-3" style={{ maxWidth: "500000" }}>
+      <br></br>
+      <div
+        className="card mb-5 gy-5"
+        style={{ maxWidth: "500000", height: 600 }}
+      >
         <div className="row g-0">
           <div className="col-md-4">
             <img
@@ -33,11 +38,13 @@ export default function ActorDetails() {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h2 className="card-title">{Actor.name}</h2>
-              <p className="card-text">{Actor.overview}</p>
-              <p className="card-text">
-                <small className="text-muted">Age : {Actor.age}</small>
+              <h2 className="card-title fw-bold fs-1">{Actor.name}</h2>
+              <p className="fw-bold fs-4 ">Overview</p>
+              <p className="card-text " style={{ color: "black" }}>
+                {Actor.overview}
               </p>
+              <p className="fw-bold fs-4 ">Known For</p>
+              <ActorSeriesSlider ActorId={id}></ActorSeriesSlider>
             </div>
           </div>
         </div>
