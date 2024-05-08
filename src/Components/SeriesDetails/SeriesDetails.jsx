@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../apis/config";
 import styles from "./SeriesDetails.module.css";
 import { useParams } from "react-router-dom";
-
+import toast, { Toaster } from "react-hot-toast";
 export default function SeriesDetails() {
   const [series, setSeries] = useState(null);
   let { id } = useParams();
@@ -37,6 +37,7 @@ export default function SeriesDetails() {
         setIsFavorite(true);
         // toggleFavorite();
         // console.log(res.data);
+        toast.success(res.data.data, { duration: 1000 });
       } else {
         setIsFavorite(false);
         // toggleFavorite();
@@ -50,6 +51,7 @@ export default function SeriesDetails() {
       if (res.data.isSuccess) {
         setIsFavorite(false);
         // console.log(res.data);
+        toast.error(res.data.data, { duration: 1000 });
       } else {
         setIsFavorite(true);
         // console.log(res.data);

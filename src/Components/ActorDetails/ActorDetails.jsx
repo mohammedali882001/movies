@@ -11,7 +11,7 @@ export default function ActorDetails() {
       .get(`Actor/${id}`)
       .then((res) => {
         // console.log(res.data.data);
-        setActor(res.data.data);
+        setActor(res?.data?.data);
       })
       .catch((err) => {
         console.log(err);

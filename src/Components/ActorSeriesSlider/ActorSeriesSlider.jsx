@@ -18,9 +18,9 @@ export default function ActorSeriesSlider({ ActorId }) {
   };
   function getAllSeries() {
     axiosInstance.get(`ActorSeries/actor/${ActorId}`).then((res) => {
-      console.log(res.data.data);
+      console.log(res?.data?.data);
       if (res.data.isSuccess) {
-        setSeries(res.data.data);
+        setSeries(res?.data?.data);
       } else {
         setSeries([]);
       }

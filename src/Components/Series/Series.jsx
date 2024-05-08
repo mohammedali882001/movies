@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../apis/config";
 import { Link } from "react-router-dom";
-
+import toast, { Toaster } from "react-hot-toast";
 export default function SeriesCategories() {
   const [seriesCat, setSeriesCat] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -81,6 +81,7 @@ export default function SeriesCategories() {
         prevSeriesData.map((series) => {
           if (series.seriesId === id) {
             series.isFavorite = true;
+            // toast.success("Add Successfully", { duration: 1000 });
           }
           return series;
         })
@@ -97,6 +98,7 @@ export default function SeriesCategories() {
         prevSeriesData.map((series) => {
           if (series.seriesId === id) {
             series.isFavorite = false;
+            // toast.error("Removed Successfully", { duration: 1000 });
           }
           return series;
         })
