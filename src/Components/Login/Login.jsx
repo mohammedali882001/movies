@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -10,7 +10,7 @@ export default function Login({ SaveUserData }) {
   let navigate = useNavigate();
   let [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
+  let [IsLoggedIn, setIsLoggedIn] = useState(false);
   let HandleLogin = (values) => {
     setIsLoading(true);
     axiosInstance
@@ -21,15 +21,28 @@ export default function Login({ SaveUserData }) {
 
           localStorage.setItem("userToken", response.data.data.token);
           SaveUserData();
+          setIsLoggedIn(true);
           navigate("/");
         } else {
           setIsLoading(false);
           setErrorMsg(response.data.data.value);
+          setIsLoggedIn(false);
         }
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+        setIsLoggedIn(false);
+      });
   };
-
+  ///Use Effect
+  useEffect(() => {
+    let tokenForUser = localStorage.getItem("userToken");
+    if (tokenForUser) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   let Validation = Yup.object({
     userName: Yup.string()
       .required("User Name is Required")

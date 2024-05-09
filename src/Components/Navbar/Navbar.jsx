@@ -43,7 +43,7 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="getAllFavSeries">
               Favorite Series
             </Link>
-            {userData === null && setUserData === null ? (
+            {userData === null ? (
               <>
                 <Link className="nav-link" to="Register">
                   Register
