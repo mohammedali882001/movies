@@ -14,8 +14,7 @@ export default function Register() {
   const HandleRegister = async (values) => {
     setIsLoading(true);
 
-    const response = await 
-    axiosInstance
+    const response = await axiosInstance
       .post(`Account/register`, values)
       .then((res) => {
         if (res.data && res.data.isSuccess) {
