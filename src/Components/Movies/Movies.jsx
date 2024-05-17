@@ -11,8 +11,26 @@ export default function Movies() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [seriesData, setSeriesData] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [firstID, setFirstId] = useState(0);
+
+  let getFirstId = async () => {
+    await axiosInstance
+      .get("Category/firstCat")
+      .then((res) => {
+        if (res.data.isSuccess) {
+          console.log(res.data.data);
+          setFirstId(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
+    getFirstId();
+    setSelectedCategory(firstID);
+    console.log(selectedCategory);
     const getSeriesCategories = async () => {
       try {
         const response = await axiosInstance.get("Category");

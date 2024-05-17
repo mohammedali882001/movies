@@ -16,10 +16,12 @@ export default function Directors() {
         setDirectors(res.data.data);
         setOriginalDirectors(res.data.data);
         setIsLoading(false);
+        console.log(res.data.data);
       } else {
         setDirectors([]);
         setOriginalDirectors([]);
         setIsLoading(false);
+        console.log(res.data);
       }
     });
   };

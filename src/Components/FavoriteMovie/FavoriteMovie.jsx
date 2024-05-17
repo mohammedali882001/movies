@@ -9,7 +9,7 @@ export default function FavoriteMovie() {
       Authorization: `Bearer ${token}`,
     },
   };
-  let GetAllFavSeries = () => {
+  let GetAllFavMovies = () => {
     axiosInstance
       .get(`FavMovie`, config)
       .then((res) => {
@@ -26,11 +26,11 @@ export default function FavoriteMovie() {
   };
 
   useEffect(() => {
-    GetAllFavSeries();
+    GetAllFavMovies();
   }, []);
 
   useEffect(() => {
-    GetAllFavSeries();
+    GetAllFavMovies();
   }, [favList]);
 
   return (
@@ -38,7 +38,7 @@ export default function FavoriteMovie() {
       <div className="row">
         {favList.map((fav) => (
           <div key={fav.id} className="col col-3 mb-5">
-            <FavoriteMovieCart FavSeries={fav}></FavoriteMovieCart>
+            <FavoriteMovieCart FavMovie={fav}></FavoriteMovieCart>
           </div>
         ))}
       </div>

@@ -4,7 +4,7 @@ import { axiosInstance } from "../apis/config";
 
 import toast, { Toaster } from "react-hot-toast";
 
-export default function FavoriteMovieCart({ FavSeries }) {
+export default function FavoriteMovieCart({ FavMovie }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const token = localStorage.getItem("userToken");
   const config = {
@@ -15,7 +15,7 @@ export default function FavoriteMovieCart({ FavSeries }) {
 
   let GetIsFavorite = async () => {
     await axiosInstance
-      .get(`FavMovie/${FavSeries.movieId}`, config) //////////////////////////
+      .get(`FavMovie/${FavMovie.movieId}`, config) //////////////////////////
       .then((res) => {
         if (res.data.isSuccess) {
           // console.log(res.data);
@@ -29,19 +29,17 @@ export default function FavoriteMovieCart({ FavSeries }) {
         console.log(err);
       });
   };
-  let DeleteSeriesFromFavorite = () => {
-    axiosInstance
-      .delete(`FavMovie/${FavSeries.movieId}`, config)
-      .then((res) => {
-        if (res.data.isSuccess) {
-          setIsFavorite(false);
-          // console.log(res.data);
-          toast.error(res.data.data, { duration: 1000 });
-        } else {
-          setIsFavorite(true);
-          // console.log(res.data);
-        }
-      });
+  let DeleteMovieFromFavorite = () => {
+    axiosInstance.delete(`FavMovie/${FavMovie.movieId}`, config).then((res) => {
+      if (res.data.isSuccess) {
+        setIsFavorite(false);
+        // console.log(res.data);
+        toast.error(res.data.data, { duration: 1000 });
+      } else {
+        setIsFavorite(true);
+        // console.log(res.data);
+      }
+    });
   };
 
   useEffect(() => {
@@ -56,24 +54,24 @@ export default function FavoriteMovieCart({ FavSeries }) {
       >
         <Link
           style={{ textDecoration: "none" }}
-          to={`/movieDetails/${FavSeries.movieId}`}
+          to={`/movieDetails/${FavMovie.movieId}`}
         >
           <img
-            src={FavSeries.movieImage}
+            src={FavMovie.movieImage}
             className="card-img-top"
             alt="image Name"
           />
           <div className="card-body">
             <h5 className="card-title text-primary fw-bolder">
-              {FavSeries.movieName}
+              {FavMovie.movieName}
             </h5>
             <p className="card-text">
               <span className=" text-primary fw-bolder  "> Overview :</span>{" "}
-              {FavSeries.movieDescription}
+              {FavMovie.movieDescription}
             </p>
           </div>
         </Link>
-        <button onClick={DeleteSeriesFromFavorite} className=" btn m-0 p-0 ">
+        <button onClick={DeleteMovieFromFavorite} className=" btn m-0 p-0 ">
           <i className=" fa-regular text-main fa-trash-can m-2"> </i>
         </button>
       </div>
