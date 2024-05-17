@@ -40,7 +40,7 @@ export default function Movies() {
           setSeriesCat([]);
         }
       } catch (error) {
-        console.error("Error fetching series categories:", error);
+        console.error("Error fetching series categories:)", error);
       }
     };
 
