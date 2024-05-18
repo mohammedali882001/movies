@@ -36,6 +36,9 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="actors">
               Actors
             </Link>
+            <Link className="nav-link" to="AddActor">
+              Add Actor
+            </Link>
             <Link className="nav-link" to="director">
               Directors
             </Link>

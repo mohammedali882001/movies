@@ -2,7 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
+// import "./assets/css/all.min.css";
+// import "./assets/css/main.css";
+// import "./assets/css/style.css";
+// import "./assets/js/script.js";
+// import "./js/fav.js";
+// import "./js/script.js";
+// import "./js/showfav.js";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

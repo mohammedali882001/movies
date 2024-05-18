@@ -47,14 +47,13 @@ export default function Login({ SaveUserData }) {
     userName: Yup.string()
       .required("User Name is Required")
       .min(3, "User Name Must Be greater than 3")
-      .max(10, "User Name Must Be less than 10"),
+      .max(20, "User Name Must Be less than 10"),
     // .email("plz enter correct email"),
-    password: Yup.string()
-      .required("Password is required")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "The password must be at least 8 characters long and contain at least one alphabet character, one digit, and one special character among @$!%*?&."
-      ),
+    password: Yup.string().required("Password is required"),
+    // .matches(
+    //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+    //   "The password must be at least 8 characters long and contain at least one alphabet character, one digit, and one special character among @$!%*?&."
+    // ),
   });
 
   let formik = useFormik({

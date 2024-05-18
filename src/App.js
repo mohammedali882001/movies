@@ -18,6 +18,10 @@ import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
 import Series from "./Components/Series/Series";
 import { Toaster } from "react-hot-toast";
 import FavoriteSeriesList from "./Components/FavoriteSeriesList/FavoriteSeriesList";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import { ActorContextProvider } from "./Context/ActorContext";
+import AddActor from "./Components/AddActor/AddActor";
+
 import Movies from "./Components/Movies/Movies";
 function App() {
   const [userData, setUserData] = useState(null);
@@ -51,6 +55,15 @@ function App() {
           path: "seriesDetails/:id",
           element: <SeriesDetails></SeriesDetails>,
         },
+        {
+          path: "series",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Series></Series>{" "}
+            </ProtectedRoute>
+          ),
+        },
         { path: "series", element: <Series></Series> },
         { path: "movies", element: <Movies></Movies> },
 
@@ -60,9 +73,14 @@ function App() {
         { path: "actorsDetails/:id", element: <ActorDetails></ActorDetails> },
 
         { path: "director", element: <Directors></Directors> },
+        { path: "addActor", element: <AddActor></AddActor> },
         {
           path: "getAllFavSeries",
-          element: <FavoriteSeriesList></FavoriteSeriesList>,
+          element: (
+            <ProtectedRoute>
+              <FavoriteSeriesList></FavoriteSeriesList>
+            </ProtectedRoute>
+          ),
         },
 
         {
@@ -77,7 +95,9 @@ function App() {
     <>
       <Toaster></Toaster>
       <div className="App">
-        <RouterProvider router={routers}></RouterProvider>
+        <ActorContextProvider>
+          <RouterProvider router={routers}></RouterProvider>
+        </ActorContextProvider>
       </div>
     </>
   );
