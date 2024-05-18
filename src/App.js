@@ -18,6 +18,7 @@ import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
 import Series from "./Components/Series/Series";
 import { Toaster } from "react-hot-toast";
 import FavoriteSeriesList from "./Components/FavoriteSeriesList/FavoriteSeriesList";
+import Movies from "./Components/Movies/Movies";
 function App() {
   const [userData, setUserData] = useState(null);
 
@@ -51,6 +52,8 @@ function App() {
           element: <SeriesDetails></SeriesDetails>,
         },
         { path: "series", element: <Series></Series> },
+        { path: "movies", element: <Movies></Movies> },
+
         // { path: "details/:id", element: <SeriesDetails></SeriesDetails> },
         { path: "actor", element: <ActorCard></ActorCard> },
         { path: "actors", element: <ActorList></ActorList> },

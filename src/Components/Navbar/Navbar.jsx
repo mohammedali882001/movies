@@ -27,7 +27,7 @@ export default function Navbar({ userData, setUserData }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="movies">
               Movies
             </Link>
             <Link className="nav-link" to="series">
