@@ -149,7 +149,7 @@ export default function Movies() {
               {seriesData.map((series) => (
                 <div key={series.seriesId} className="col-md-3 mb-4">
                   <div className="card">
-                    <Link to={`/movieDetails/${series.movieId}`}>
+                    <Link to={`/movieDetails/${series.id}`}>
                       <img
                         src={series.posterImage}
                         className="card-img-top"

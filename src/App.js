@@ -15,14 +15,18 @@ import ActorList from "./Components/ActorList/ActorList";
 import ActorDetails from "./Components/ActorDetails/ActorDetails";
 import Directors from "./Components/Directors/Directors";
 import DirectorDetails from "./Components/DirectorDetails/DirectorDetails";
+
 import Series from "./Components/Series/Series";
 import { Toaster } from "react-hot-toast";
 import FavoriteSeriesList from "./Components/FavoriteSeriesList/FavoriteSeriesList";
+
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { ActorContextProvider } from "./Context/ActorContext";
 import AddActor from "./Components/AddActor/AddActor";
 
 import Movies from "./Components/Movies/Movies";
+import MovieDetails from "./Components/MovieDetails/MovieDetails";
+import FavoriteMovie from "./Components/FavoriteMovie/FavoriteMovie";
 function App() {
   const [userData, setUserData] = useState(null);
 
@@ -56,6 +60,10 @@ function App() {
           element: <SeriesDetails></SeriesDetails>,
         },
         {
+          path: "movieDetails/:id",
+          element: <MovieDetails></MovieDetails>,
+        },
+        {
           path: "series",
           element: (
             <ProtectedRoute>
@@ -79,6 +87,15 @@ function App() {
           element: (
             <ProtectedRoute>
               <FavoriteSeriesList></FavoriteSeriesList>
+            </ProtectedRoute>
+          ),
+        },
+
+        {
+          path: "getAllFavMovies",
+          element: (
+            <ProtectedRoute>
+              <FavoriteMovie></FavoriteMovie>
             </ProtectedRoute>
           ),
         },

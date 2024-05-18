@@ -46,6 +46,10 @@ export default function Navbar({ userData, setUserData }) {
             <Link className="nav-link" to="getAllFavSeries">
               Favorite Series
             </Link>
+
+            <Link className="nav-link" to="getAllFavMovies">
+              Favorite Movies
+            </Link>
             {userData === null ? (
               <>
                 <Link className="nav-link" to="Register">
